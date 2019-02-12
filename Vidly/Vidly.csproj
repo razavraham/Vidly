@@ -141,6 +141,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -152,12 +153,30 @@
     <Compile Include="Migrations\201902120810390_InitialModel.Designer.cs">
       <DependentUpon>201902120810390_InitialModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902121026552_addIsSubscribedToCustomer.cs" />
+    <Compile Include="Migrations\201902121026552_addIsSubscribedToCustomer.Designer.cs">
+      <DependentUpon>201902121026552_addIsSubscribedToCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902121038416_AddMembershipType.cs" />
+    <Compile Include="Migrations\201902121038416_AddMembershipType.Designer.cs">
+      <DependentUpon>201902121038416_AddMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902121051353_ApplyAnnotationsToCustomerName.cs" />
+    <Compile Include="Migrations\201902121051353_ApplyAnnotationsToCustomerName.Designer.cs">
+      <DependentUpon>201902121051353_ApplyAnnotationsToCustomerName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902121226042_PopulateMembershipTypes.cs" />
+    <Compile Include="Migrations\201902121226042_PopulateMembershipTypes.Designer.cs">
+      <DependentUpon>201902121226042_PopulateMembershipTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\RandomMovieViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -222,6 +241,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201902120810390_InitialModel.resx">
       <DependentUpon>201902120810390_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902121026552_addIsSubscribedToCustomer.resx">
+      <DependentUpon>201902121026552_addIsSubscribedToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902121038416_AddMembershipType.resx">
+      <DependentUpon>201902121038416_AddMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902121051353_ApplyAnnotationsToCustomerName.resx">
+      <DependentUpon>201902121051353_ApplyAnnotationsToCustomerName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902121226042_PopulateMembershipTypes.resx">
+      <DependentUpon>201902121226042_PopulateMembershipTypes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
