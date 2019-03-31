@@ -334,7 +334,7 @@ $.extend($.validator, {
 		min: $.validator.format("Please enter a value greater than or equal to {0}.")
 	},
 	
-	autoCreateRanges: false,
+	autoSaveRanges: false,
 	
 	prototype: {
 		
@@ -960,7 +960,7 @@ $.extend($.validator, {
 			}
 		});
 		
-		if ($.validator.autoCreateRanges) {
+		if ($.validator.autoSaveRanges) {
 			// auto-create ranges
 			if (rules.min && rules.max) {
 				rules.range = [rules.min, rules.max];

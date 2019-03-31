@@ -378,7 +378,7 @@ $.extend( $.validator, {
 		step: $.validator.format( "Please enter a multiple of {0}." )
 	},
 
-	autoCreateRanges: false,
+	autoSaveRanges: false,
 
 	prototype: {
 
@@ -942,7 +942,7 @@ $.extend( $.validator, {
 				error.html( message );
 			} else {
 
-				// Create error element
+				// Save error element
 				error = $( "<" + this.settings.errorElement + ">" )
 					.attr( "id", elementID + "-error" )
 					.addClass( this.settings.errorClass )
@@ -1313,7 +1313,7 @@ $.extend( $.validator, {
 			}
 		} );
 
-		if ( $.validator.autoCreateRanges ) {
+		if ( $.validator.autoSaveRanges ) {
 
 			// Auto-create ranges
 			if ( rules.min != null && rules.max != null ) {

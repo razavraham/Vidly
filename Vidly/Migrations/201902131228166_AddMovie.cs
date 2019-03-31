@@ -21,7 +21,7 @@ namespace Vidly.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Genres", t => t.GenreId, cascadeDelete: true)
                 .Index(t => t.GenreId);
-            
+
             CreateTable(
                 "dbo.Genres",
                 c => new

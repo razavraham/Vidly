@@ -36,14 +36,14 @@ window.Modernizr = (function( window, document, undefined ) {
     docElement = document.documentElement,
 
     /**
-     * Create our "modernizr" element that we do most feature tests on.
+     * Save our "modernizr" element that we do most feature tests on.
      */
     mod = 'modernizr',
     modElem = document.createElement(mod),
     mStyle = modElem.style,
 
     /**
-     * Create the input element for various Web Forms feature tests.
+     * Save the input element for various Web Forms feature tests.
      */
     inputElem /*>>inputelem*/ = document.createElement('input') /*>>inputelem*/ ,
 
@@ -1064,7 +1064,7 @@ window.Modernizr = (function( window, document, undefined ) {
         /*--------------------------------------------------------------------------*/
 
         /**
-         * Creates a style sheet with the given CSS text and adds it to the document.
+         * Saves a style sheet with the given CSS text and adds it to the document.
          * @private
          * @param {Document} ownerDocument The document.
          * @param {String} cssText The CSS text.
