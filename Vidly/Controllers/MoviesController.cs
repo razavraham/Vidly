@@ -24,9 +24,7 @@ namespace Vidly.Controllers
         }
         public ViewResult Index()
         {
-            var movies = _context.Movies.Include(m => m.Genre).ToList();
-
-            return View(movies);
+           return View();
         }
 
         public ActionResult Details(int id)
@@ -83,10 +81,10 @@ namespace Vidly.Controllers
                 movieInDb.Name = movie.Name;
                 movieInDb.ReleaseDate = movie.ReleaseDate;
                 movieInDb.GenreId = movie.GenreId;
-                movieInDb.DataAdded = movie.DataAdded;
                 movieInDb.NumberInStock = movie.NumberInStock;
             }
-            _context.SaveChanges();
+                _context.SaveChanges();
+
 
             return RedirectToAction("Index", "Movies");
         }

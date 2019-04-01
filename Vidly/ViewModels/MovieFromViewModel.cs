@@ -22,7 +22,6 @@ namespace Vidly.ViewModels
         public byte GenreId { get; set; }
 
         [Display(Name = "Release Date")]
-        [Required]
         public DateTime? ReleaseDate { get; set; }
 
         [Display(Name = "Number In Stock")]
