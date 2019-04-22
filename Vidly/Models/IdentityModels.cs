@@ -4,6 +4,8 @@ using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Vidly.Models;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace Vidly.Models
 {
@@ -11,7 +13,15 @@ namespace Vidly.Models
 
         public class ApplicationUser : IdentityUser
         {
-            public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
+        [Required]
+        [StringLength(255)]
+        public string DrivingLicense { get; set; }
+
+        [Required]
+        [StringLength(15)]
+        public string PhoneNumber { get; set; }
+
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
             {
                 // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
                 var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
