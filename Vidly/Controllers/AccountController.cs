@@ -12,7 +12,7 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin;
 using Vidly.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
-
+using System.Data.Entity.Validation;
 
 namespace Vidly.Controllers
 {
@@ -83,13 +83,20 @@ namespace Vidly.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.UserName };
+
+                var user = new ApplicationUser
+
+                {
+                    UserName = model.UserName,
+                    DrivingLicense = model.DrivingLicense,
+                    PhoneNumber = model.PhoneNumber
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     //var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
                     //var roleManager = new RoleManager<IdentityRole>(roleStore);
-                    //await roleManager.SaveAsync(new IdentityRole("CanManageMovies"));
+                    //await roleManager.CreateAsync(new IdentityRole("CanManageMovies"));
                     //await UserManager.AddToRoleAsync(user.Id, "CanManageMovies");
 
                     await SignInAsync(user, isPersistent: false);
@@ -267,26 +274,32 @@ namespace Vidly.Controllers
                 return RedirectToAction("Manage");
             }
 
-            if (ModelState.IsValid)
-            {
-                // Get the information about the user from the external login provider
-                var info = await AuthenticationManager.GetExternalLoginInfoAsync();
-                if (info == null)
+                if (ModelState.IsValid)
                 {
-                    return View("ExternalLoginFailure");
-                }
-                var user = new ApplicationUser() { UserName = model.UserName };
-                var result = await UserManager.CreateAsync(user);
-                if (result.Succeeded)
-                {
-                    result = await UserManager.AddLoginAsync(user.Id, info.Login);
+                    // Get the information about the user from the external login provider
+                    var info = await AuthenticationManager.GetExternalLoginInfoAsync();
+                    if (info == null)
+                    {
+                        return View("ExternalLoginFailure");
+                    }
+                    var user = new ApplicationUser()
+                    {
+                        UserName = model.UserName,
+                        DrivingLicense = model.DrivingLicense,
+                        PhoneNumber = model.PhoneNumber
+                    };
+
+                    var result = await UserManager.CreateAsync(user);
                     if (result.Succeeded)
                     {
-                        await SignInAsync(user, isPersistent: false);
-                        return RedirectToLocal(returnUrl);
+                        result = await UserManager.AddLoginAsync(user.Id, info.Login);
+                        if (result.Succeeded)
+                        {
+                            await SignInAsync(user, isPersistent: false);
+                            return RedirectToLocal(returnUrl);
+                        }
                     }
-                }
-                AddErrors(result);
+                    AddErrors(result);                
             }
 
             ViewBag.ReturnUrl = returnUrl;
