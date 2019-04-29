@@ -25,6 +25,9 @@ namespace Vidly.App_Start
             Mapper.CreateMap<Genre, GenreDto>();
             Mapper.CreateMap<GenreDto, Genre>().ForMember(m => m.Id, opt => opt.Ignore());
 
+            Mapper.CreateMap<Rental,NewRentalDto>();
+            Mapper.CreateMap<NewRentalDto, Rental>().ForMember(r => r.Id, opt => opt.Ignore());
+
 
 
         }
